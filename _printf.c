@@ -10,6 +10,7 @@
 
 int _printf(const char *format, ...)
 {
+<<<<<<< HEAD
   int i = 0;
   int printed = 0;
   va_list args;
@@ -51,4 +52,37 @@ int _printf(const char *format, ...)
     }
   
   return (printed);
+=======
+	int i = 0;
+	int printed = 0;
+	va_list args;
+
+	va_start(args, format);
+	while (format[i])
+	{
+		while (format[i] == '%')
+		{
+			switch (format[i + 1])
+			{
+			case 's':
+				printed += print_string(args);
+				i += 2;
+				break;
+			default:
+				_putchar(format[i]);
+				_putchar(format[i + 1]);
+				i += 2;
+			}
+		}
+	}
+
+	if (format[i])
+	{
+		_putchar(format[i]);
+		printed++;
+		i++;
+	}
+
+	return (printed);
+>>>>>>> 3c2f7e31c95309e31ef5f560437809ea9628f3e5
 }
